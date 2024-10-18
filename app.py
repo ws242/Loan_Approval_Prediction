@@ -34,7 +34,7 @@ def main():
     ax.set_title('Loan Intent Distribution')
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45)  # x축 레이블 회전
 
-    # Streamlit에 그래프 출력
+    # 그래프 출력
     st.pyplot(fig)
 
     # 대출 등급별 연체율 
@@ -50,24 +50,40 @@ def main():
 
     # 그래프 출력
     st.pyplot(fig)
-   
-    # 신용 등급별 대출 상태 분포
-    st.subheader("신용 등급별 대출 상태 분포 (박스플롯)")
+    
+    # "대출 금액 분포에 따른 연체 상태"
+    st.subheader("대출 금액 분포에 따른 연체 상태")
 
     # 그래프 그리기
     fig, ax = plt.subplots(figsize=(8, 6))
+
+    # 박스플롯 그리기
+    sns.boxplot(data=data, x='loan_status', y='loan_amnt', ax=ax, color='skyblue')
+
+    # 그래프 제목 및 레이블 설정
+    ax.set_title('Loan Amount Distribution by Loan Status', fontsize=15)
+    ax.set_xlabel('Loan Status', fontsize=12)
+    ax.set_ylabel('Loan Amount', fontsize=12)
+
+    # 그래프 출력
+    st.pyplot(fig)
+        
+    # 신용 등급별 대출 금액 및 상태 분포
+    st.subheader('신용 등급별 대출 금액 및 상태 분포')
+    
+    # 그래프 그리기
+    fig, ax = plt.subplots(figsize=(10, 6))
 
     # 박스플롯 그리기: 대출 등급별로 대출 금액의 분포를 loan_status에 따라 나눔
     sns.boxplot(data=data, x='loan_grade', y='loan_amnt', hue='loan_status', ax=ax)
 
     # 그래프 제목 및 레이블 설정
-    ax.set_title('Loan Amount Distribution by Loan Grade and Status', fontsize=15)
-    ax.set_xlabel('Loan Grade', fontsize=10)
-    ax.set_ylabel('Loan Amount', fontsize=10)
-    
+    ax.set_title('Loan Amount Distribution by Loan Grade and Status', fontsize=16)
+    ax.set_xlabel('Loan Grade', fontsize=12)
+    ax.set_ylabel('Loan Amount', fontsize=12)
+     
     # 그래프 출력
     st.pyplot(fig)
-        
 
 if __name__ == "__main__":
     main() 
