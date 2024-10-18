@@ -1,1 +1,1 @@
-# imbank_streamlit_demo
+# Loan_Prediction
