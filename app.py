@@ -51,8 +51,8 @@ def main():
     # 그래프 출력
     st.pyplot(fig)
     
-    # "대출 금액 분포에 따른 연체 상태"
-    st.subheader("대출 금액 분포에 따른 연체 상태")
+    # "대출 금액 분포에 따른 대출 상태"
+    st.subheader("대출 금액 분포에 따른 대출 상태")
 
     # 그래프 그리기
     fig, ax = plt.subplots(figsize=(8, 6))
