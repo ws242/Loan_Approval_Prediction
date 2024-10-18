@@ -8,7 +8,7 @@ import seaborn as sns
 # 데이터 로드 (캐시 사용)
 @st.cache_data
 def load_data():
-    train = pd.read_csv('./dataset/train.csv')
+    train = pd.read_csv('./data/train.csv')
     return train
 
 def main():
